@@ -37,33 +37,38 @@ const Terminal = () => {
             <br />
             <div className="pl-4">
               <span className="text-[#9CDCFE]">name</span>:{" "}
-              <span className="text-[#CE9178]">'Thorn Chorn'</span>,
+              <span className="text-[#CE9178]">&apos;Thorn Chorn&apos;</span>,
               <br />
               <span className="text-[#9CDCFE]">role</span>:{" "}
-              <span className="text-[#CE9178]">'Software Developer'</span>,
+              <span className="text-[#CE9178]">
+                &apos;Software Developer&apos;
+              </span>
+              ,
               <br />
               <span className="text-[#9CDCFE]">location</span>:{" "}
-              <span className="text-[#CE9178]">'Cambodia'</span>,
+              <span className="text-[#CE9178]">&apos;Cambodia&apos;</span>,
               <br />
               <span className="text-[#9CDCFE]">skills</span>: [
               <div className="pl-4">
-                <span className="text-[#CE9178]">'JavaScript'</span>,
+                <span className="text-[#CE9178]">&apos;JavaScript&apos;</span>,
                 <br />
-                <span className="text-[#CE9178]">'React.js'</span>,
+                <span className="text-[#CE9178]">&apos;React.js&apos;</span>,
                 <br />
-                <span className="text-[#CE9178]">'Node.js'</span>,
+                <span className="text-[#CE9178]">&apos;Node.js&apos;</span>,
                 <br />
-                <span className="text-[#CE9178]">'UI/UX Design'</span>
+                <span className="text-[#CE9178]">&apos;UI/UX Design&apos;</span>
               </div>
               ],
               <br />
               <span className="text-[#9CDCFE]">passions</span>: [
               <div className="pl-4">
-                <span className="text-[#CE9178]">'Clean Code'</span>,
+                <span className="text-[#CE9178]">&apos;Clean Code&apos;</span>,
                 <br />
-                <span className="text-[#CE9178]">'Innovation'</span>,
+                <span className="text-[#CE9178]">&apos;Innovation&apos;</span>,
                 <br />
-                <span className="text-[#CE9178]">'Problem Solving'</span>
+                <span className="text-[#CE9178]">
+                  &apos;Problem Solving&apos;
+                </span>
               </div>
               ]
             </div>
