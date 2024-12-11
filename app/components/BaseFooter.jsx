@@ -1,8 +1,9 @@
+'use client'
 import { motion } from "framer-motion";
 
-const Footer = () => {
+const BaseFooter = () => {
   return (
-    <footer className="bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+    <div className="bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid-white/[0.02] pointer-events-none" />
       <div className="absolute inset-0 flex items-center justify-center">
@@ -81,8 +82,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 };
 
-export default Footer;
+export default BaseFooter;
