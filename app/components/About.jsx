@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
+import React, { memo } from "react";
 
-const StatsCard = ({ stat, index }) => {
+const StatsCard = memo(({ stat, index }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -13,9 +14,9 @@ const StatsCard = ({ stat, index }) => {
       <div className="text-sm text-gray-400">{stat.label}</div>
     </motion.div>
   );
-};
+});
 
-const InterestCard = ({ interest, index }) => {
+const InterestCard = memo(({ interest, index }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
@@ -39,7 +40,10 @@ const InterestCard = ({ interest, index }) => {
       </div>
     </motion.div>
   );
-};
+});
+
+StatsCard.displayName = 'StatsCard';
+InterestCard.displayName = 'InterestCard';
 
 const About = () => {
   const stats = [

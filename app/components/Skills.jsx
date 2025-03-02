@@ -1,9 +1,9 @@
 'use client'
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
-import {  useState } from "react";
+import { memo, useState } from "react";
 
-const SkillCard = ({ skill, index }) => {
+const SkillCard = memo(({ skill, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [ref, inView] = useInView({
     threshold: 0.3,
@@ -67,9 +67,9 @@ const SkillCard = ({ skill, index }) => {
       </div>
     </animated.div>
   );
-};
+});
 
-const TechIcon = ({ tech, index }) => {
+const TechIcon = memo(({ tech, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const hoverProps = useSpring({
@@ -93,7 +93,10 @@ const TechIcon = ({ tech, index }) => {
       </span>
     </animated.div>
   );
-};
+});
+
+TechIcon.displayName = 'TechIcon';
+SkillCard.displayName = 'SkillCard';
 
 const Skills = () => {
   const [ref, inView] = useInView({

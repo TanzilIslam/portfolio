@@ -6,28 +6,30 @@ import Skills from "@/app/components/Skills";
 import Projects from "@/app/components/Projects";
 import Contact from "@/app/components/Contact";
 
-export default function Home() {
+const handleAnchorClick = (event) => {
+  const anchor = event.target.closest("a");
+  const href = anchor?.getAttribute("href");
+
+  if (anchor && href?.startsWith("#")) {
+    event.preventDefault();
+
+    const targetElement = document.querySelector(href);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }
+};
+
+const Home = () => {
   useEffect(() => {
-    const handleAnchorClick = (e) => {
-      const anchor = e.target.closest("a");
-      const href = anchor?.getAttribute("href");
-      if (anchor && href?.startsWith("#")) {
-        e.preventDefault();
-        const targetElement = document.querySelector(href);
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: "smooth",
-          });
-        }
-      }
-    };
+    document.body.addEventListener("click", handleAnchorClick);
 
-    // Restrict event listener to a specific container if possible
-    const container = document.body;
-    container.addEventListener("click", handleAnchorClick);
-
-    return () => container.removeEventListener("click", handleAnchorClick);
+    return () => document.body.removeEventListener("click", handleAnchorClick);
   }, []);
+
   return (
     <>
       <Hero />
@@ -37,4 +39,6 @@ export default function Home() {
       <Contact />
     </>
   );
-}
+};
+
+export default Home;

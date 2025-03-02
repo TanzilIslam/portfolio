@@ -1,10 +1,30 @@
 'use client'
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
-import { useState } from "react";
+import { useState, memo } from "react";
 import AnimatedInput from "@/app/components/Animated/AnimatedInput.jsx";
-import SuccessMessage from "@/app/components/SuccessMessage.jsx";
-import ContactInfo from "@/app/components/ContactInfo.jsx";
+
+const ContactInfo = memo(() => {
+  return (
+    <div className="flex flex-col space-y-4">
+      <h3 className="text-2xl font-semibold text-white">Contact Information</h3>
+      <p className="text-gray-400">Email: your.email@example.com</p>
+      <p className="text-gray-400">Phone: +123 456 7890</p>
+      <p className="text-gray-400">Location: Your City, Your Country</p>
+    </div>
+  );
+});
+
+const SuccessMessage = memo(({ successSpringProps }) => {
+  return (
+    <animated.div style={successSpringProps} className="text-green-500 text-lg font-semibold">
+      Thank you! Your message has been sent successfully.
+    </animated.div>
+  );
+});
+
+SuccessMessage.displayName = 'SuccessMessage';
+ContactInfo.displayName = 'ContactInfo';
 
 const Contact = () => {
   const [formState, setFormState] = useState({

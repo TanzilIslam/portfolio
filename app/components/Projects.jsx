@@ -1,10 +1,9 @@
 'use client'
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
-import { useState } from "react";
+import { useState, memo } from "react";
 
-// ProjectCard component remains unchanged
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = memo(({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [ref, inView] = useInView({
     threshold: 0.3,
@@ -143,7 +142,8 @@ const ProjectCard = ({ project, index }) => {
       </div>
     </animated.div>
   );
-};
+});
+ProjectCard.displayName = 'ProjectCard';
 
 const Projects = () => {
   const [ref, inView] = useInView({
