@@ -5,7 +5,7 @@ import AnimatedLines from "@/app/components/Animated/AnimatedLines";
 import Image from "next/image";
 const Typewriter = dynamic(() => import("typewriter-effect"));
 
-const HeroTitle = () => (
+const HeroTitle = ({ details }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -15,18 +15,13 @@ const HeroTitle = () => (
     <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight">
       Hi, I&apos;m{" "}
       <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-        Thorn Chorn
+        {details?.title}
       </span>
     </h1>
     <div className="text-xl sm:text-2xl text-blue-300 h-12">
       <Typewriter
         options={{
-          strings: [
-            "Full Stack Developer",
-            "UI/UX Enthusiast",
-            "Problem Solver",
-            "Tech Innovator",
-          ],
+          strings: details?.tags?.map((tag) => tag?.title),
           autoStart: true,
           loop: true,
           delay: 80,
@@ -36,15 +31,14 @@ const HeroTitle = () => (
   </motion.div>
 );
 
-const HeroDescription = () => (
+const HeroDescription = ({ details }) => (
   <motion.p
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: 0.4 }}
     className="text-base sm:text-lg text-gray-400 max-w-xl"
   >
-    Crafting digital experiences that blend innovation with functionality.
-    Specialized in building modern web applications that make a difference.
+    {details?.profile_summary}
   </motion.p>
 );
 
@@ -85,20 +79,22 @@ const CTAButtons = () => (
   </motion.div>
 );
 
-const SocialLinks = () => (
+const SocialLinks = ({ details }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: 0.8 }}
     className="flex items-center justify-center sm:justify-start gap-6 pt-4"
   >
-    {['GitHub', 'LinkedIn', 'Twitter'].map((platform) => (
+    {details?.social_links?.map((platform) => (
       <a
-        key={platform}
-        href="#"
+        key={platform?.title}
+        href={platform?.link}
         className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        {platform}
+        {platform?.title}
       </a>
     ))}
   </motion.div>
@@ -137,7 +133,7 @@ const HeroImage = () => (
   </motion.div>
 );
 
-const Hero = () => {
+const Hero = ({ details }) => {
   return (
     <section className="min-h-screen relative overflow-hidden bg-[#0A0A0A] pt-24 md:pt-0">
       {/* Gradient Overlay */}
@@ -154,7 +150,7 @@ const Hero = () => {
       />
 
       {/* Animated Lines */}
-      <AnimatedLines />
+      <AnimatedLines details={details} />
 
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 min-h-[calc(100vh-4rem)] md:h-screen flex items-center">
@@ -175,16 +171,16 @@ const Hero = () => {
               </motion.div>
 
               {/* Main Title */}
-              <HeroTitle />
+              <HeroTitle details={details} />
 
               {/* Description */}
-              <HeroDescription />
+              <HeroDescription details={details} />
 
               {/* CTA Buttons */}
               <CTAButtons />
 
               {/* Social Links */}
-              <SocialLinks />
+              <SocialLinks details={details} />
             </div>
 
             {/* Right Content - 2 Columns */}

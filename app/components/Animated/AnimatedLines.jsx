@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const AnimatedLines = () => {
+const AnimatedLines = ({ details }) => {
   return (
     <div className="absolute inset-0 overflow-hidden">
       {[...Array(5)].map((_, i) => (
