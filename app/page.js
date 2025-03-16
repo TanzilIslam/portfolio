@@ -47,8 +47,8 @@ const Home = () => {
   return (
     <>
       <Hero details={details} />
-      <About />
-      <Skills />
+      <About details={details} />
+      <Skills details={details} />
       <Projects />
       <Contact />
     </>

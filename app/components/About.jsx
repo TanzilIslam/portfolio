@@ -10,8 +10,8 @@ const StatsCard = memo(({ stat, index }) => {
       whileHover={{ scale: 1.1, y: -10 }}
       className="text-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-300"
     >
-      <div className="text-2xl font-bold text-blue-400">{stat.value}</div>
-      <div className="text-sm text-gray-400">{stat.label}</div>
+      <div className="text-2xl font-bold text-blue-400">{stat.count}+</div>
+      <div className="text-sm text-gray-400">{stat.title}</div>
     </motion.div>
   );
 });
@@ -25,16 +25,16 @@ const InterestCard = memo(({ interest, index }) => {
       whileHover={{ scale: 1.05, y: -5 }}
       className="group p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors duration-300"
     >
-      <div className="flex items-start space-x-4">
+      <div className="flex flex-wrap  items-center space-x-4">
         <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
-          {interest.icon}
+          {interest?.icon}
         </span>
         <div>
           <h4 className="text-white font-medium mb-1 group-hover:text-blue-400 transition-colors duration-300">
-            {interest.name}
+            {interest?.title}
           </h4>
           <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">
-            {interest.desc}
+            {interest?.subtitle}
           </p>
         </div>
       </div>
@@ -42,30 +42,10 @@ const InterestCard = memo(({ interest, index }) => {
   );
 });
 
-StatsCard.displayName = 'StatsCard';
-InterestCard.displayName = 'InterestCard';
+StatsCard.displayName = "StatsCard";
+InterestCard.displayName = "InterestCard";
 
-const About = () => {
-  const stats = [
-    { label: "Years Experience", value: "5+" },
-    { label: "Projects Completed", value: "50+" },
-    { label: "Technologies", value: "15+" },
-    { label: "Happy Clients", value: "30+" },
-  ];
-
-  const interests = [
-    {
-      icon: "🚀",
-      name: "Innovation",
-      desc: "Exploring cutting-edge technologies",
-    },
-    { icon: "💡", name: "Problem Solving", desc: "Finding elegant solutions" },
-    { icon: "🎨", name: "Design", desc: "Creating beautiful interfaces" },
-    { icon: "🔄", name: "Agile", desc: "Iterative development" },
-    { icon: "🌐", name: "Web Performance", desc: "Optimizing for speed and efficiency" },
-    { icon: "🛡️", name: "Security", desc: "Building secure applications" }
-  ];
-
+const About = ({ details }) => {
   return (
     <section
       id="about"
@@ -107,15 +87,11 @@ const About = () => {
                   My Journey
                 </h3>
                 <p className="text-gray-300 leading-relaxed">
-                  As a passionate Software Developer based in Cambodia, I
-                  specialize in building exceptional digital experiences. With a
-                  strong foundation in full-stack development and a keen eye for
-                  design, I create solutions that are not only functional but
-                  also intuitive and user-friendly.
+                  {details?.journey}
                 </p>
                 <div className="mt-6 grid grid-cols-2 gap-4">
-                  {stats.map((stat, index) => (
-                    <StatsCard key={stat.label} stat={stat} index={index} />
+                  {details?.stats.map((stat, index) => (
+                    <StatsCard key={stat.title} stat={stat} index={index} />
                   ))}
                 </div>
               </motion.div>
@@ -133,12 +109,8 @@ const About = () => {
                   What Drives Me
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {interests.map((interest, index) => (
-                    <InterestCard
-                      key={interest.name}
-                      interest={interest}
-                      index={index}
-                    />
+                  {details?.drives_me?.map((item, index) => (
+                    <InterestCard key={index} interest={item} index={index} />
                   ))}
                 </div>
               </motion.div>

@@ -1,10 +1,12 @@
-'use client'
+"use client";
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 import { memo, useState } from "react";
 
 const SkillCard = memo(({ skill, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const stringToArray = (str) => str.split(",").map((s) => s.trim());
+  const tags = stringToArray(skill?.tags);
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true,
@@ -38,14 +40,14 @@ const SkillCard = memo(({ skill, index }) => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
-            {skill.name}
+            {skill?.title}
           </h3>
-          <span className="text-blue-400">{skill.level}%</span>
+          <span className="text-blue-400">{skill?.percentage}%</span>
         </div>
         <div className="h-2 bg-white/10 rounded-full overflow-hidden">
           <animated.div
             style={{
-              width: inView ? `${skill.level}%` : "0%",
+              width: inView ? `${skill?.percentage}%` : "0%",
               background: isHovered
                 ? "linear-gradient(90deg, #3B82F6 0%, #8B5CF6 100%)"
                 : "linear-gradient(90deg, #60A5FA 0%, #A78BFA 100%)",
@@ -55,7 +57,7 @@ const SkillCard = memo(({ skill, index }) => {
           />
         </div>
         <div className="flex flex-wrap gap-2">
-          {skill.tags.map((tag, i) => (
+          {tags?.map((tag, i) => (
             <span
               key={i}
               className="px-3 py-1 text-xs bg-white/5 text-gray-300 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all duration-300 cursor-default"
@@ -87,18 +89,20 @@ const TechIcon = memo(({ tech, index }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className="text-3xl mb-2">{tech.icon}</span>
+      <span className="text-3xl mb-2">{tech?.icon}</span>
       <span className="text-gray-300 text-sm group-hover:text-blue-400 transition-colors duration-300">
-        {tech.name}
+        {tech?.title}
       </span>
     </animated.div>
   );
 });
 
-TechIcon.displayName = 'TechIcon';
-SkillCard.displayName = 'SkillCard';
+TechIcon.displayName = "TechIcon";
+SkillCard.displayName = "SkillCard";
 
-const Skills = () => {
+const Skills = ({ details }) => {
+  console.log(details?.skills);
+
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -168,8 +172,8 @@ const Skills = () => {
 
           {/* Main Skills Grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-16">
-            {skills.map((skill, index) => (
-              <SkillCard key={skill.name} skill={skill} index={index} />
+            {details?.skills?.map((skill, index) => (
+              <SkillCard key={index} skill={skill} index={index} />
             ))}
           </div>
 
@@ -179,8 +183,8 @@ const Skills = () => {
               Technologies I Work With
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-              {technologies.map((tech, index) => (
-                <TechIcon key={tech.name} tech={tech} index={index} />
+              {details?.technologies?.map((tech, index) => (
+                <TechIcon key={index} tech={tech} index={index} />
               ))}
             </div>
           </div>
