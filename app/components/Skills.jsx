@@ -2,10 +2,10 @@
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 import { memo, useState } from "react";
+import { stringToArray } from "@/utils/shared";
 
 const SkillCard = memo(({ skill, index }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const stringToArray = (str) => str.split(",").map((s) => s.trim());
   const tags = stringToArray(skill?.tags);
   const [ref, inView] = useInView({
     threshold: 0.3,
@@ -101,8 +101,7 @@ TechIcon.displayName = "TechIcon";
 SkillCard.displayName = "SkillCard";
 
 const Skills = ({ details }) => {
-  console.log(details?.skills);
-
+  
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -113,38 +112,6 @@ const Skills = ({ details }) => {
     transform: inView ? "translateY(0)" : "translateY(20px)",
     config: config.gentle,
   });
-
-  const skills = [
-    {
-      name: "Frontend Development",
-      level: 90,
-      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux"],
-    },
-    {
-      name: "Backend Development",
-      level: 85,
-      tags: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"],
-    },
-    {
-      name: "UI/UX Design",
-      level: 80,
-      tags: ["Figma", "Adobe XD", "Responsive Design", "Prototyping"],
-    },
-    {
-      name: "DevOps & Tools",
-      level: 75,
-      tags: ["Git", "Docker", "AWS", "CI/CD", "Linux"],
-    },
-  ];
-
-  const technologies = [
-    { name: "React", icon: "⚛️" },
-    { name: "Node.js", icon: "🟢" },
-    { name: "TypeScript", icon: "📘" },
-    { name: "MongoDB", icon: "🍃" },
-    { name: "AWS", icon: "☁️" },
-    { name: "Docker", icon: "🐳" },
-  ];
 
   return (
     <section

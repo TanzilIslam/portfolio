@@ -49,7 +49,7 @@ const Home = () => {
       <Hero details={details} />
       <About details={details} />
       <Skills details={details} />
-      <Projects />
+      <Projects details={details} />
       <Contact />
     </>
   );

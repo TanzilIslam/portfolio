@@ -2,8 +2,12 @@
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 import { useState, memo } from "react";
+import { stringToArray } from "@/utils/shared";
 
 const ProjectCard = memo(({ project, index }) => {
+  console.log(project?.techstack);
+  
+  const technologies = stringToArray(project?.techstack);
   const [isHovered, setIsHovered] = useState(false);
   const [ref, inView] = useInView({
     threshold: 0.3,
@@ -49,8 +53,8 @@ const ProjectCard = memo(({ project, index }) => {
       <div className="relative aspect-video overflow-hidden">
         <animated.img
           style={imageProps}
-          src={project.image}
-          alt={project.title}
+          src={project?.screenshot}
+          alt={project?.title}
           className="w-full h-full object-cover"
         />
         <animated.div
@@ -62,15 +66,16 @@ const ProjectCard = memo(({ project, index }) => {
       {/* Project Content */}
       <div className="p-6 space-y-4">
         <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
-          {project.title}
+          {project?.title}
         </h3>
         <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 line-clamp-2">
-          {project.description}
+          {project?.details}
         </p>
 
         {/* Technologies Used */}
         <div className="flex flex-wrap gap-2">
-          {project.technologies.map((tech) => (
+
+          {technologies.map((tech) => (
             <span
               key={tech}
               className="px-3 py-1 text-sm bg-white/5 text-blue-400 rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-300 cursor-default"
@@ -82,9 +87,9 @@ const ProjectCard = memo(({ project, index }) => {
 
         {/* Project Links */}
         <div className="flex gap-4 pt-4">
-          {project.liveUrl && (
+          {project?.url && (
             <a
-              href={project.liveUrl}
+              href={project?.url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-white hover:text-blue-400 transition-all duration-300 group/link"
@@ -114,7 +119,7 @@ const ProjectCard = memo(({ project, index }) => {
               </span>
             </a>
           )}
-          {project.githubUrl && (
+          {project?.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
@@ -145,7 +150,8 @@ const ProjectCard = memo(({ project, index }) => {
 });
 ProjectCard.displayName = 'ProjectCard';
 
-const Projects = () => {
+const Projects = ({ details }) => {
+  const projects = details?.projects || [];
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -157,44 +163,6 @@ const Projects = () => {
     config: config.gentle,
   });
 
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A full-stack e-commerce platform with real-time inventory management and secure payment processing.",
-      image: "https://via.placeholder.com/600x400",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-    },
-    {
-      title: "Task Management App",
-      description:
-        "A collaborative task management application with real-time updates and team collaboration features.",
-      image: "https://via.placeholder.com/600x400",
-      technologies: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-    },
-    {
-      title: "AI Content Generator",
-      description:
-        "An AI-powered content generation tool that helps create engaging blog posts and social media content.",
-      image: "https://via.placeholder.com/600x400",
-      technologies: ["Python", "Flask", "OpenAI", "React"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "A modern portfolio website built with React and Tailwind CSS, featuring smooth animations and dark mode.",
-      image: "https://via.placeholder.com/600x400",
-      technologies: ["React", "Tailwind CSS", "Vite", "React Spring"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example",
-    },
-  ];
 
   return (
     <section
@@ -227,7 +195,7 @@ const Projects = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <ProjectCard
-                key={project.title}
+                key={index}
                 project={project}
                 index={index}
               />
