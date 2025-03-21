@@ -21,7 +21,7 @@ const BaseFooter = () => {
             </span>
 
             {/* Center Content */}
-            <div className="flex flex-wrap items-center justify-center gap-2 text-gray-300 text-sm order-3 sm:order-none text-center">
+            {/* <div className="flex flex-wrap items-center justify-center gap-2 text-gray-300 text-sm order-3 sm:order-none text-center">
               <span className="inline-flex items-center gap-1">
                 Built with
                 <span className="inline-block">
@@ -56,10 +56,10 @@ const BaseFooter = () => {
               <span className="text-gray-400">
                 © {new Date().getFullYear()}
               </span>
-            </div>
+            </div> */}
 
             {/* GitHub Link */}
-            <motion.a
+            {/* <motion.a
               href="https://github.com/chornthorn/portfolio-template"
               target="_blank"
               rel="noopener noreferrer"
@@ -78,7 +78,7 @@ const BaseFooter = () => {
                 />
               </svg>
               <span className="text-sm">View Source</span>
-            </motion.a>
+            </motion.a> */}
           </div>
         </div>
       </div>

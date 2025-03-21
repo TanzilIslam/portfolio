@@ -1,32 +1,48 @@
-'use client'
+"use client";
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 import { useState, memo } from "react";
 import AnimatedInput from "@/app/components/Animated/AnimatedInput.jsx";
+import ContactCard from "./ContactCard";
 
-const ContactInfo = memo(() => {
+const ContactInfo = memo(({ details }) => {
   return (
-    <div className="flex flex-col space-y-4">
-      <h3 className="text-2xl font-semibold text-white">Contact Information</h3>
-      <p className="text-gray-400">Email: your.email@example.com</p>
-      <p className="text-gray-400">Phone: +123 456 7890</p>
-      <p className="text-gray-400">Location: Your City, Your Country</p>
+    <div className="space-y-8">
+      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-500">
+        <h3 className="text-2xl font-semibold text-white mb-6">
+          Contact Information
+        </h3>
+        <div className="space-y-6">
+          {details?.contacts_info?.map((contact, index) => (
+            <ContactCard
+              key={index}
+              icon={contact.icon}
+              title={contact.title}
+              value={contact.value}
+              link={contact.link}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 });
 
 const SuccessMessage = memo(({ successSpringProps }) => {
   return (
-    <animated.div style={successSpringProps} className="text-green-500 text-lg font-semibold">
+    <animated.div
+      style={successSpringProps}
+      className="text-green-500 text-lg font-semibold"
+    >
       Thank you! Your message has been sent successfully.
     </animated.div>
   );
 });
 
-SuccessMessage.displayName = 'SuccessMessage';
-ContactInfo.displayName = 'ContactInfo';
+SuccessMessage.displayName = "SuccessMessage";
+ContactInfo.displayName = "ContactInfo";
 
-const Contact = () => {
+const Contact = ({ details }) => {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -103,10 +119,10 @@ const Contact = () => {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
-            <ContactInfo />
+            <ContactInfo details={details} />
 
             {/* Contact Form / Success Message */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-purple-500/30 transition-all duration-500 relative min-h-[400px]">
+            {/* <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-purple-500/30 transition-all duration-500 relative min-h-[400px]">
               {isSubmitted ? (
                 <SuccessMessage successSpringProps={successSpringProps} />
               ) : (
@@ -147,7 +163,7 @@ const Contact = () => {
                   </button>
                 </animated.form>
               )}
-            </div>
+            </div> */}
           </div>
         </animated.div>
       </div>

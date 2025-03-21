@@ -10,7 +10,6 @@ import { supabaseClient } from "@/config/supabaseClient";
 const handleAnchorClick = (event) => {
   const anchor = event.target.closest("a");
   const href = anchor?.getAttribute("href");
-  
 
   if (anchor && href?.startsWith("#")) {
     event.preventDefault();
@@ -50,7 +49,7 @@ const Home = () => {
       <About details={details} />
       <Skills details={details} />
       <Projects details={details} />
-      <Contact />
+      <Contact details={details} />
     </>
   );
 };
