@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import profileImage from "@/app/assets/thorn_profile.jpg";
+import profileImage from "@/public/og.jpg"
 import AnimatedLines from "@/app/components/Animated/AnimatedLines";
 import Image from "next/image";
 const Typewriter = dynamic(() => import("typewriter-effect"));

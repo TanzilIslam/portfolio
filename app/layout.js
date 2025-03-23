@@ -16,19 +16,26 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   metadataBase: new URL("https://next-js-portfolio-web.netlify.app"),
   title: {
-    default: "HI, I am Thorn Chorn",
-    template: "%s | Thorn Chorn",
+    default: "HI, I am Tanzil Islam",
+    template: "%s | Tanzil Islam",
   },
-  description: "A next js personal website",
+  description: "A personal portfolio website of Tanzil Islam",
   keywords: [
     "next.js",
     "tailwind css",
     "framer motion",
     "personal website",
     "portfolio",
+    "vue.js",
+    "javascript",
+    "typescript",
+    "react",
+    "next.js",
+    "supabase",
+    "nuxt.js"
   ],
-  authors: [{ name: "Thorn Chorn" }],
-  applicationName: "Next Portfolio",
+  authors: [{ name: "Tanzil Islam" }],
+  applicationName: "Tanzil's Portfolio",
   generator: "Next.js",
   robots: {
     index: true,
@@ -41,12 +48,12 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    title: "HI, I am Thorn Chorn",
+    title: "HI, I am Tanzil Islam",
     description: "A next js personal website",
-    siteName: "Next Portfolio",
+    siteName: "Tanzil's Portfolio",
     images: [
       {
-        url: "/og.png",
+        url: "/og.jpg",
         width: 1200,
         height: 630,
         alt: "Next.js personal website portfolio preview",
@@ -56,11 +63,11 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@thornchorn",
-    creator: "@thornchorn",
-    title: "HI, I am Thorn Chorn",
+    site: "@tanzil_ism",
+    creator: "@tanzil_ism",
+    title: "HI, I am Tanzil Islam",
     description: "A next js personal website",
-    images: ["/og.png"],
+    images: ["/og.jpg"],
   },
   verification: {
     google: "your-google-verification-code",
@@ -111,7 +118,7 @@ export default function RootLayout({ children }) {
     },
     image: {
       "@type": "ImageObject",
-      url: "/og.png",
+      url: "/og.jpg",
       width: 1200,
       height: 630,
     },

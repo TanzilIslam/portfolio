@@ -13,10 +13,10 @@ const NAV_ITEMS = [
   { name: 'Contact', href: '#contact' },
 ];
 
-const Logo = memo(() => (
-  <a href="#" className="text-2xl font-bold text-white" aria-label="TC Logo">
+export const Logo = memo(() => (
+  <a href="#" className="text-2xl font-bold text-white" aria-label="Tanzil Logo">
     <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-      TC
+      TI
     </span>
   </a>
 ));

@@ -1,12 +1,10 @@
-'use client'
+"use client";
 import { useSpring, animated, config } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 import { useState, memo } from "react";
 import { stringToArray } from "@/utils/shared";
 
 const ProjectCard = memo(({ project, index }) => {
-  console.log(project?.techstack);
-  
   const technologies = stringToArray(project?.techstack);
   const [isHovered, setIsHovered] = useState(false);
   const [ref, inView] = useInView({
@@ -74,7 +72,6 @@ const ProjectCard = memo(({ project, index }) => {
 
         {/* Technologies Used */}
         <div className="flex flex-wrap gap-2">
-
           {technologies.map((tech) => (
             <span
               key={tech}
@@ -87,9 +84,9 @@ const ProjectCard = memo(({ project, index }) => {
 
         {/* Project Links */}
         <div className="flex gap-4 pt-4">
-          {project?.url && (
+          {project?.link && (
             <a
-              href={project?.url}
+              href={project?.link}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-white hover:text-blue-400 transition-all duration-300 group/link"
@@ -148,7 +145,7 @@ const ProjectCard = memo(({ project, index }) => {
     </animated.div>
   );
 });
-ProjectCard.displayName = 'ProjectCard';
+ProjectCard.displayName = "ProjectCard";
 
 const Projects = ({ details }) => {
   const projects = details?.projects || [];
@@ -162,7 +159,6 @@ const Projects = ({ details }) => {
     transform: inView ? "translateY(0)" : "translateY(20px)",
     config: config.gentle,
   });
-
 
   return (
     <section
@@ -194,18 +190,14 @@ const Projects = ({ details }) => {
 
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                project={project}
-                index={index}
-              />
+              <ProjectCard key={index} project={project} index={index} />
             ))}
           </div>
 
           {/* More Projects Link */}
-          <div className="text-center mt-16">
+          {/* <div className="text-center mt-16">
             <a
-              href="https://github.com/your-github"
+              href="https://github.com/tanzil-ism"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-all duration-300 hover:scale-105 group"
@@ -225,7 +217,7 @@ const Projects = ({ details }) => {
                 />
               </svg>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

@@ -1,5 +1,7 @@
 'use client'
 import { motion } from "framer-motion";
+import { Logo } from "./Header";
+
 
 const BaseFooter = () => {
   return (
@@ -14,11 +16,7 @@ const BaseFooter = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-6">
             {/* Logo/Brand */}
-            <span className="text-2xl font-bold order-1 sm:order-none">
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-                TC
-              </span>
-            </span>
+            <Logo />
 
             {/* Center Content */}
             {/* <div className="flex flex-wrap items-center justify-center gap-2 text-gray-300 text-sm order-3 sm:order-none text-center">
