@@ -13,28 +13,30 @@ import {
 
 const inter = Inter({ subsets: ["latin"] });
 
+const ogImageBase = "https://tanzil-dev.netlify.app/og.jpg";
+
 export const metadata = {
-  metadataBase: new URL("https://next-js-portfolio-web.netlify.app"),
+  metadataBase: new URL("https://tanzil-dev.netlify.app/"),
   title: {
-    default: "HI, I am Tanzil Islam",
+    default: "Hi, I'm Tanzil Islam – Web Developer & Frontend Enthusiast",
     template: "%s | Tanzil Islam",
   },
-  description: "A personal portfolio website of Tanzil Islam",
+  description: "Explore the personal portfolio of Tanzil Islam, a passionate web developer skilled in Next.js, Vue, Supabase, and modern frontend technologies.",
   keywords: [
-    "next.js",
-    "tailwind css",
-    "framer motion",
-    "personal website",
-    "portfolio",
-    "vue.js",
-    "javascript",
-    "typescript",
-    "react",
-    "next.js",
-    "supabase",
-    "nuxt.js"
+    "Tanzil Islam",
+    "web developer portfolio",
+    "frontend developer",
+    "Next.js developer",
+    "Vue.js developer",
+    "Supabase",
+    "Tailwind CSS",
+    "Framer Motion",
+    "JavaScript",
+    "TypeScript",
+    "Nuxt.js",
+    "React"
   ],
-  authors: [{ name: "Tanzil Islam" }],
+  authors: [{ name: "Tanzil Islam", url: "https://tanzil-dev.netlify.app" }],
   applicationName: "Tanzil's Portfolio",
   generator: "Next.js",
   robots: {
@@ -48,15 +50,16 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    title: "HI, I am Tanzil Islam",
-    description: "A next js personal website",
-    siteName: "Tanzil's Portfolio",
+    url: "https://tanzil-dev.netlify.app/",
+    title: "Hi, I'm Tanzil Islam – Web Developer Portfolio",
+    description: "Showcasing the works and skills of Tanzil Islam – expert in modern web technologies like Next.js, Vue, Supabase, and more.",
+    siteName: "Tanzil Islam Portfolio",
     images: [
       {
-        url: "/og.jpg",
+        url: ogImageBase,
         width: 1200,
         height: 630,
-        alt: "Next.js personal website portfolio preview",
+        alt: "Portfolio preview of Tanzil Islam",
       },
     ],
     locale: "en_US",
@@ -65,14 +68,15 @@ export const metadata = {
     card: "summary_large_image",
     site: "@tanzil_ism",
     creator: "@tanzil_ism",
-    title: "HI, I am Tanzil Islam",
-    description: "A next js personal website",
-    images: ["/og.jpg"],
+    title: "Hi, I'm Tanzil Islam – Web Developer Portfolio",
+    description: "Check out Tanzil Islam's developer portfolio built with Next.js, Vue, Supabase, and more.",
+    images: [ogImageBase],
   },
   verification: {
     google: "your-google-verification-code",
   },
 };
+
 
 // Separate viewport export
 export const viewport = {

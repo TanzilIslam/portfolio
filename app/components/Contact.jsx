@@ -8,7 +8,7 @@ import ContactCard from "./ContactCard";
 const ContactInfo = memo(({ details }) => {
   return (
     <div className="space-y-8">
-      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-500">
+      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 md:p-8 border border-white/10 hover:border-blue-500/30 transition-all duration-500">
         <h3 className="text-2xl font-semibold text-white mb-6">
           Contact Information
         </h3>

@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import profileImage from "@/public/og.jpg"
+import profileImage from "@/app/assets/profile.jpg";
 import AnimatedLines from "@/app/components/Animated/AnimatedLines";
 import Image from "next/image";
 const Typewriter = dynamic(() => import("typewriter-effect"));
@@ -116,11 +116,12 @@ const HeroImage = () => (
       <div className="relative aspect-[4/5] rounded-lg overflow-hidden bg-gray-900">
         <Image
           src={profileImage.src}
-          alt="Thorn Chorn"
-          className="w-full h-full object-cover"
+          alt="Tanzil Islam"
+          className="h-[400px] sm:h-[400px] md:h-[500px] lg:h-[600px] w-full object-cover"
           loading="eager"
           width={400}
           height={600}
+          priority
         />
         {/* Overlay Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-20" />

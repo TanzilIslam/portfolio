@@ -25,7 +25,7 @@ const InterestCard = memo(({ interest, index }) => {
       whileHover={{ scale: 1.05, y: -5 }}
       className="group p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors duration-300"
     >
-      <div className="flex flex-wrap  items-center space-x-4">
+      <div className="flex items-center space-x-4">
         <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
           {interest?.icon}
         </span>
@@ -108,7 +108,7 @@ const About = ({ details }) => {
                 <h3 className="text-2xl font-semibold text-white mb-6">
                   What Drives Me
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
                   {details?.drives_me?.map((item, index) => (
                     <InterestCard key={index} interest={item} index={index} />
                   ))}
