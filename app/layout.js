@@ -73,7 +73,7 @@ export const metadata = {
     images: [ogImageBase],
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "M0jBt3Fg1iIq6UYa85t4nunCgDuEHukcHtRZZuRle2o",
   },
 };
 
