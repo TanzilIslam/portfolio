@@ -94,8 +94,8 @@ export default function RootLayout({ children }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "HI, I am Thorn Chorn",
-    url: "https://next-js-portfolio-web.netlify.app",
+    name: "HI, I am Tanzil Islam",
+    url: "https://tanzil-dev.netlify.app",
     potentialAction: {
       "@type": "SearchAction",
       target:
@@ -112,7 +112,7 @@ export default function RootLayout({ children }) {
     ],
     author: {
       "@type": "Person",
-      name: "Thorn Chorn",
+      name: "Tanzil Islam",
     },
     application: {
       "@type": "SoftwareApplication",
@@ -128,7 +128,7 @@ export default function RootLayout({ children }) {
     },
     publisher: {
       "@type": "Organization",
-      name: "Thorn Chorn",
+      name: "Tanzil Islam",
     },
   };
 
