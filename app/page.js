@@ -149,7 +149,7 @@ const ProjectsMockData = {
       details: "Cycle Shop is a platform for cycle shop",
       techstack:
         "Dashboard : Vue JS | Vuetify, Landing Page: Nuxt JS | Primevue",
-      link: "https://cycle-shop.vercel.app/",
+      link: " https://cycle-shop-public.netlify.app/",
     },
   ],
 };
@@ -159,19 +159,19 @@ const ContactMockData = {
     {
       icon: "✉️",
       title: "Email",
-      value: "tanzil.ishmam@gmail.com",
-      link: "mailto:tanzil.ishmam@gmail.com",
+      value: "tanjilislam90@gmail.com",
+      link: "mailto:tanjilislam90@gmail.com",
     },
     {
       icon: "📱",
       title: "Phone",
-      value: "+880 1796-682646",
-      link: "tel:+8801796682646",
+      value: "+8801617573729",
+      link: "tel:+8801617573729",
     },
     {
       icon: "📍",
       title: "Location",
-      value: "Dhaka, Bangladesh",
+      value: "Bhola, Bangladesh",
       link: null,
     },
   ],
